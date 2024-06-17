@@ -293,6 +293,48 @@
                         }
                     }
                 }
+                
+                if (videoArray.count >= 500 && fileArray.count > 0) {
+                    //超过上限 继续请求搜索
+                    SDK_SYSTEM_TIME beginNTime;
+                    SDK_SYSTEM_TIME endNTime;
+                    
+                    CLouldVideoResource *resource = (CLouldVideoResource *)[fileArray lastObject];
+                    NSString *endTimeString = [NSString stringWithFormat:@"%@ %@",resource.beginDate,resource.beginTime];
+                    
+                    NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+                    NSUInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+                    NSDate *dateEndTime = [self dateWithDateTimeString:endTimeString];
+                    NSDateComponents *endDateComponent = [calendar components:unitFlags fromDate:dateEndTime];
+                    int endYear = (int)[endDateComponent year];
+                    int endMonth = (int)[endDateComponent month];
+                    int endDay = (int)[endDateComponent day];
+                    int endHour = (int)[endDateComponent hour];
+                    int endMinute = (int)[endDateComponent minute];
+                    int endSecond = (int)[endDateComponent second];
+                    
+                    endNTime.year = endYear;
+                    endNTime.month = endMonth;
+                    endNTime.day = endDay;
+                    endNTime.hour = endHour;
+                    endNTime.minute = endMinute;
+                    endNTime.second = endSecond - 1;
+                    
+                    beginNTime.year = endYear;
+                    beginNTime.month = endMonth;
+                    beginNTime.day = endDay;
+                    beginNTime.hour = 0;
+                    beginNTime.minute = 0;
+                    beginNTime.second = 0;
+                    
+                    time_t ToTime_t(SDK_SYSTEM_TIME *time);
+                    int beginTime = (int)ToTime_t(&beginNTime);
+                    
+                    time_t ToTime_t(SDK_SYSTEM_TIME *time);
+                    int endTime = (int)ToTime_t(&endNTime);
+                    
+                    MC_SearchMediaByTime(self.MsgHandle, SZSTR(resource.devId),  -1,"main",beginTime,endTime,0);
+                }
             }
             if ([self.delegate respondsToSelector:@selector(getCloudVideoResult:)]) {
                 [self.delegate getCloudVideoResult:msg->param1];
@@ -401,4 +443,14 @@
     info.end_Time = es;
     [array addObject:info];
 }
+
+-(NSDate*)dateWithDateTimeString:(NSString*)dateTimeStr{
+    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSCalendar *calender = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    [dateFormat setLocale:[[NSLocale alloc] initWithLocaleIdentifier:calender.locale.localeIdentifier]];
+    return [dateFormat dateFromString:dateTimeStr];
+}
+
+
 @end
