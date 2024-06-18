@@ -319,6 +319,8 @@
 		203BD11C21DF602D005B91E9 /* BuzzerConfig.mm in Sources */ = {isa = PBXBuildFile; fileRef = 203BD11B21DF602D005B91E9 /* BuzzerConfig.mm */; };
 		203BD12821DF7515005B91E9 /* BuzzerViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 203BD12621DF7515005B91E9 /* BuzzerViewController.mm */; };
 		223C3FE82BF5E2CE00EB17E0 /* AudioUnitAECRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 223C3FE22BF5E2CE00EB17E0 /* AudioUnitAECRecorder.m */; };
+		2282ADA92C1C32B2004ABF74 /* EpitomeRecordConfig.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2282ADA82C1C32B2004ABF74 /* EpitomeRecordConfig.mm */; };
+		22DFA4332C1FD0F50054AC4E /* EpitomeRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DFA4322C1FD0F50054AC4E /* EpitomeRecordViewController.m */; };
 		22FAE1292BF4908700FA1C8C /* JFScreenCameraCallVc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 22FAE1182BF4908600FA1C8C /* JFScreenCameraCallVc.mm */; };
 		22FAE12A2BF4908700FA1C8C /* JFHangUpPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FAE11A2BF4908600FA1C8C /* JFHangUpPopView.m */; };
 		22FAE12B2BF4908700FA1C8C /* VideoIntercomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FAE11C2BF4908600FA1C8C /* VideoIntercomView.m */; };
@@ -1404,6 +1406,11 @@
 		223C3FE32BF5E2CE00EB17E0 /* PlayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerDelegate.h; sourceTree = "<group>"; };
 		223C3FE52BF5E2CE00EB17E0 /* CommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDefine.h; sourceTree = "<group>"; };
 		223C3FEC2BF73AF200EB17E0 /* FunSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FunSDK.framework; sourceTree = "<group>"; };
+		2282ADA52C1C284E004ABF74 /* SupportEpitomeRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SupportEpitomeRecord.h; sourceTree = "<group>"; };
+		2282ADA72C1C32B2004ABF74 /* EpitomeRecordConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpitomeRecordConfig.h; sourceTree = "<group>"; };
+		2282ADA82C1C32B2004ABF74 /* EpitomeRecordConfig.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = EpitomeRecordConfig.mm; sourceTree = "<group>"; };
+		22DFA4312C1FD0F50054AC4E /* EpitomeRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpitomeRecordViewController.h; sourceTree = "<group>"; };
+		22DFA4322C1FD0F50054AC4E /* EpitomeRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpitomeRecordViewController.m; sourceTree = "<group>"; };
 		22FAE1172BF4908600FA1C8C /* VideoIntercomVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoIntercomVC.h; sourceTree = "<group>"; };
 		22FAE1182BF4908600FA1C8C /* JFScreenCameraCallVc.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JFScreenCameraCallVc.mm; sourceTree = "<group>"; };
 		22FAE11A2BF4908600FA1C8C /* JFHangUpPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFHangUpPopView.m; sourceTree = "<group>"; };
@@ -3530,6 +3537,24 @@
 			path = JFAECRecord;
 			sourceTree = "<group>";
 		};
+		2282ADA62C1C3281004ABF74 /* EpitomeRecordManager */ = {
+			isa = PBXGroup;
+			children = (
+				2282ADA72C1C32B2004ABF74 /* EpitomeRecordConfig.h */,
+				2282ADA82C1C32B2004ABF74 /* EpitomeRecordConfig.mm */,
+			);
+			path = EpitomeRecordManager;
+			sourceTree = "<group>";
+		};
+		22DFA4302C1FD0CD0054AC4E /* EpitomeRecordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				22DFA4312C1FD0F50054AC4E /* EpitomeRecordViewController.h */,
+				22DFA4322C1FD0F50054AC4E /* EpitomeRecordViewController.m */,
+			);
+			path = EpitomeRecordViewController;
+			sourceTree = "<group>";
+		};
 		22FAE1162BF4908600FA1C8C /* VideoIntercomVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -4407,6 +4432,7 @@
 		96C6B2B021BB6867000B32E7 /* DeviceConfigManager */ = {
 			isa = PBXGroup;
 			children = (
+				2282ADA62C1C3281004ABF74 /* EpitomeRecordManager */,
 				7A810B242BD8F82000979CD0 /* DeviceAudioPlayManager */,
 				C1E557DC2A736AE9006F5171 /* deviceBluetoothConfigHelper */,
 				C1E557C02A70B788006F5171 /* deviceConfigHelper */,
@@ -4820,6 +4846,7 @@
 				96C6B3DF21BB6868000B32E7 /* ExtRecord.h */,
 				96C6B3E021BB6868000B32E7 /* Record.h */,
 				96C6B3E121BB6868000B32E7 /* SupportExtRecord.h */,
+				2282ADA52C1C284E004ABF74 /* SupportEpitomeRecord.h */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -4993,6 +5020,7 @@
 		96C6B42F21BB6868000B32E7 /* DeviceConfigViewController */ = {
 			isa = PBXGroup;
 			children = (
+				22DFA4302C1FD0CD0054AC4E /* EpitomeRecordViewController */,
 				7A810B312BDB475200979CD0 /* DeviceAudioPlayViewController */,
 				1F7192342ABD95F8008E3414 /* HumanDetectionViewController */,
 				1F66F28B2A5FC4DA00463303 /* VoiceBroadcastingViewController */,
@@ -6207,6 +6235,7 @@
 				96C6B4F821BB6869000B32E7 /* EncodeDataSourse.m in Sources */,
 				1FF6ABC62A3207620012A0CE /* ZXMaxiCodeReader.m in Sources */,
 				1FF6AB8F2A3207620012A0CE /* ZXBitSource.m in Sources */,
+				2282ADA92C1C32B2004ABF74 /* EpitomeRecordConfig.mm in Sources */,
 				C1EDEF6C2A74BE20008F7ABE /* JFUserAuthorizationManager.m in Sources */,
 				96C6B5CB21BB6869000B32E7 /* PlayMenuView.m in Sources */,
 				6C7B1D392227BBB900151E81 /* APLoginConfigVC.mm in Sources */,
@@ -6255,6 +6284,7 @@
 				96E773E4225DC475008BA52D /* DoorViewController.mm in Sources */,
 				299F049024B70CC20072D4C2 /* PCMDataPlayer.m in Sources */,
 				1FF6ABD22A3207620012A0CE /* ZXEAN13Reader.m in Sources */,
+				22DFA4332C1FD0F50054AC4E /* EpitomeRecordViewController.m in Sources */,
 				7A17F18329F25C340045AD7C /* DeviceLoginTipsManager.mm in Sources */,
 				1FC0F15223A0DBC40076F742 /* SuperView.m in Sources */,
 				1FF6ABEC2A3207620012A0CE /* ZXRSSPair.m in Sources */,

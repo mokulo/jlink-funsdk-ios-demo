@@ -154,6 +154,8 @@
             //是否支持视频对讲
             dev.sysFunction.supportVideoTalkV2 = wSelf.deviceAbilityManager.supportVideoTalkV2;
             playMenuView.btnVideoCall.hidden = !wSelf.deviceAbilityManager.supportVideoTalkV2;
+            //是否支持缩影对讲
+            dev.sysFunction.supportEpitomeRecord = wSelf.deviceAbilityManager.supportEpitomeRecord;
         }
     }];
 }

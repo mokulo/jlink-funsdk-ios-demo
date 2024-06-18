@@ -46,6 +46,7 @@
 @property (nonatomic, assign) int isupportDNChangeByImage;//日夜切换灵敏度
 @property (nonatomic, assign) int iSupportGunBallTwoSensorPtzLocate;  //是否支持多目枪球云台定位 和Android统一用来判断是否是指哪看哪设备
 @property (nonatomic, assign) BOOL supportVideoTalkV2;  //带屏摇头机视频对讲
+@property (nonatomic, assign)BOOL supportEpitomeRecord;  // 是否支持缩影录像
 
 
 @end
