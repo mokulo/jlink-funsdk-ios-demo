@@ -33,6 +33,10 @@
 
 @property (nonatomic, strong) Storage *storage;
 
+
+@property (nonatomic, assign) int serial;//磁盘
+@property (nonatomic, assign) int partition;//扇区
+
 @property (nonatomic, assign) id <StorageConfigDelegate> delegate;
 
 #pragma mark  设备存储信息请求

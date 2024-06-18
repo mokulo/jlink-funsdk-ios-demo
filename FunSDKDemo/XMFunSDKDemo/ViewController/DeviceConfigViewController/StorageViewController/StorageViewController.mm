@@ -153,6 +153,9 @@
     }else  if ([titleStr isEqualToString:TS("clean_storage")]){
         //格式化
         [SVProgressHUD show];
+        
+        config.serial = 0;
+        config.partition = 0;
         [config clearStorage];
         return;
     }

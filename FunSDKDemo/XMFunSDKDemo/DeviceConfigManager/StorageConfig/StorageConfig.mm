@@ -23,6 +23,8 @@
     General_General generalInfo;
     
     DataSource *dataSource;
+    
+    
 }
 @end
 
@@ -33,6 +35,9 @@
     if (self) {
         dataSource = [[DataSource alloc] init];
         self.storage = [[Storage alloc] init];
+        
+        self.serial = 0;
+        self.partition = 0;
     }
     return self;
 }
@@ -79,17 +84,11 @@ int format = 0;
 - (void)clearStorage {
     ChannelObject *channel = [[DeviceControl getInstance] getSelectChannel];
     storageManager.Action = "Clear";
-    //循环格式化所有磁盘和分区
-    for (int i = 0; i < storageInfo.Size(); ++i) {
-        for (int j = 0; j < storageInfo[i].Partition.Size(); ++j) {
-            storageManager.SerialNo = i;
-            storageManager.PartNo = j;
-            storageManager.Type = "Data";
-            const char* pCfgBuf = storageManager.ToString();
-            FUN_DevSetConfig_Json(self.MsgHandle, SZSTR(channel.deviceMac), storageManager.Name(), pCfgBuf, (int)strlen(pCfgBuf), -1, 25000);
-            format++;//格式化磁盘的数量
-        }
-    }
+    storageManager.SerialNo = self.serial;
+    storageManager.PartNo = self.partition;
+    storageManager.Type = "Data";
+    const char* pCfgBuf = storageManager.ToString();
+    FUN_DevSetConfig_Json(self.MsgHandle, SZSTR(channel.deviceMac), storageManager.Name(), pCfgBuf, (int)strlen(pCfgBuf), -1, 25000);
 }
 
 #pragma mark 获取设备存储配置回调接口
@@ -177,14 +176,32 @@ int format = 0;
         }
     }
     if ([param.name isEqualToString:[NSString stringWithUTF8String:storageManager.Name()]]) {
-        format--;
+        self.partition++;//格式化成功一个分区
+        
         if (param.errorCode <= 0) {
             //当前这个磁盘格式化失败
         }
-        if (format == 0) {
-            //所有磁盘格式化结束
-            if ([self.delegate respondsToSelector:@selector(clearStorageResult:)]) {
-                [self.delegate clearStorageResult:param.errorCode];
+        
+        if (self.partition < storageInfo[self.serial].Partition.Size()) {
+            //格式化操作
+            [self clearStorage];
+        } else {
+            if (storageInfo.Size() > self.serial + 1) {
+                self.serial = self.serial + 1;
+                if (storageInfo[self.serial].Partition.Size() > 0) {
+                    self.partition = 0;
+                    [self clearStorage];
+                }else{
+                    //所有磁盘格式化结束
+                    if ([self.delegate respondsToSelector:@selector(clearStorageResult:)]) {
+                        [self.delegate clearStorageResult:param.errorCode];
+                    }
+                }
+            }else{
+                //所有磁盘格式化结束
+                if ([self.delegate respondsToSelector:@selector(clearStorageResult:)]) {
+                    [self.delegate clearStorageResult:param.errorCode];
+                }
             }
         }
     }
