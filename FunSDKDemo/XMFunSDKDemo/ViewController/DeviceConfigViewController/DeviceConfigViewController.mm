@@ -56,7 +56,6 @@
 #import "DeviceAudioPlayViewController.h"
 
 #import "DeviceRandomPwdManager.h"
-#import "EpitomeRecordViewController.h"
 
 @interface DeviceConfigViewController ()<UITableViewDelegate,UITableViewDataSource,SystemInfoConfigDelegate,SystemFunctionConfigDelegate,MFMailComposeViewControllerDelegate>
 
@@ -396,15 +395,6 @@
         vc.devID = channel.deviceMac;
         vc.channelNum = channel.channelNumber;
         [self.navigationController pushViewController:vc animated:YES];
-    }else if ([titleStr isEqualToString: TS("EpitomeRecord")]){  //缩影录像配置
-        ChannelObject *channel = [[DeviceControl getInstance] getSelectChannel];
-        DeviceObject *devObject = [[DeviceControl getInstance] GetDeviceObjectBySN:channel.deviceMac];
-        if (!devObject.sysFunction.supportEpitomeRecord) {
-            [SVProgressHUD showErrorWithStatus:TS("EE_MNETSDK_NOTSUPPORT")];
-            return;
-        }
-        EpitomeRecordViewController *epvc = [[EpitomeRecordViewController alloc] init];
-        [self.navigationController pushViewController: epvc animated: YES];
     }else{
         return;
     }
@@ -464,7 +454,6 @@
         @{@"title":TS("TR_Voice_Broadcasting"),@"detailInfo":@""},
         @{@"title":TS("MQTT"),@"detailInfo":@""},
         @{@"title":TS("TR_DeviceAudioPlay"),@"detailInfo":@""},
-        @{@"title":TS("EpitomeRecord"),@"detailInfo":@""},
     ] mutableCopy];
 }
 

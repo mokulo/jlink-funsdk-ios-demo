@@ -43,7 +43,6 @@
             self.iSupportGunBallTwoSensorPtzLocate = systemFunction.mOtherFunction.SupportGunBallTwoSensorPtzLocate.Value()?1:0;
             self.supportNetWiFiSignalLevel = systemFunction.mNetServerFunction.WifiRouteSignalLevel.Value()?1:0;
             self.supportVideoTalkV2 = systemFunction.mOtherFunction.SupportVideoTalkV2.Value();
-            self.supportEpitomeRecord = systemFunction.mOtherFunction.SupportEpitomeRecord.Value();
         }
         
         if (self.callBack) {

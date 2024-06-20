@@ -962,10 +962,4 @@ TR_BackGround_camera=后摄像头
 TR_inviteVideoCall=邀请你视频通话
 TR_deviceIsConnected=当前设备已被其他设备连接
 TR_Video_Other_Call_Off=对方已挂断
-EpitomeRecord=缩影配置
-EpitomeRecord_Enable=缩影开关
-EpitomeRecord_Interval=抽帧间隔
-EpitomeRecord_StartTime=开始时间
-EpitomeRecord_EndTime=结束时间
-EpitomeRecord_Interval_modify=1~86400，单位为秒（最大值为一天）
-EpitomeRecord_Interval_empty=抽帧间隔不能为空
+
