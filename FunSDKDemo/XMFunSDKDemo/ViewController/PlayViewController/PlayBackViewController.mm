@@ -420,6 +420,14 @@
     }
 }
 
+#pragma mark 收到视频宽高比信息
+-(void)mediaPlayer:(MediaplayerControl*)mediaPlayer width:(int)width htight:(int)height {
+    NSLog(@"width = %d; height = %d",width, height);
+    DeviceObject *dev = [[DeviceControl getInstance] GetDeviceObjectBySN: mediaPlayer.devID];
+    dev.imageWidth = width;
+    dev.imageHeight = height;
+}
+
 #pragma mark - 开始预览结果回调
 -(void)mediaPlayer:(MediaplayerControl*)mediaPlayer startResult:(int)result DSSResult:(int)dssResult {
     if (result < 0) {

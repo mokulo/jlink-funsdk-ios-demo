@@ -100,7 +100,7 @@ public:
     JBoolObj        SupportOneKeyMaskVideo;      // 是否支持一键遮蔽
     JBoolObj        SupportGunBallTwoSensorPtzLocate; //是否支持多目枪球云台定位
     JBoolObj        SupportVideoTalkV2;                    //支持视频对讲（新加）
-
+    JBoolObj        SupportEpitomeRecord;               //是否支持缩影录像
 public:
     OtherFunction(JObject *pParent = NULL, const char *szName = JK_OtherFunction):
     JObject(pParent,szName),
@@ -198,7 +198,8 @@ public:
     SupportTimingPtzTour(this,"SupportTimingPtzTour"),
     SupportGunBallTwoSensorPtzLocate(this,"SupportGunBallTwoSensorPtzLocate"),
     SupportOneKeyMaskVideo(this,"SupportOneKeyMaskVideo"),
-    SupportVideoTalkV2(this,"SupportVideoTalkV2"){
+    SupportVideoTalkV2(this,"SupportVideoTalkV2"),
+    SupportEpitomeRecord(this,"SupportEpitomeRecord"){
 	};
 
     ~OtherFunction(void){};
